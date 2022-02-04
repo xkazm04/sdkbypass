@@ -10,7 +10,7 @@ yarn add -D node-polyfill-webpack-plugin
 yarn add -D react-app-rewired
 ```
 
-## 2. Copy `config-overrides.js` to your project (next to package.json)
+## 2. Copy [config-overrides.js](https://github.com/npwork/create-react-app-with-webpack5/blob/main/config-overrides.js) to your project (next to package.json)
 
 ## 3. Replace `scripts` block in your `package.json`
 
