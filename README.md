@@ -12,7 +12,20 @@ yarn add -D react-app-rewired
 
 ## 2. Copy [config-overrides.js](https://github.com/npwork/create-react-app-with-webpack5/blob/main/config-overrides.js) to your project (next to package.json)
 
-## 3. Replace `scripts` block in your `package.json`
+## 3. Add browserify dependencies to `package.json`
+```bash
+"assert": "npm:assert",
+"crypto": "npm:crypto-browserify",
+"http": "npm:http-browserify",
+"https": "npm:https-browserify",
+"os": "npm:os-browserify",
+"stream": "npm:stream-browserify",
+"url": "npm:url",
+...
+
+```
+
+## 4. Replace `scripts` block in your `package.json`
 
 ```
 "scripts": {
