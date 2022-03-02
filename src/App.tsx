@@ -39,7 +39,20 @@ function App() {
 
     const feat = async() => {
     // Pick any function you want to test, find parameters in related specs/examples
-        const test = await solSDK.blockchain.generateWallet()
+        const test = await oneSDK.erc20.prepare.deploySignedTransaction({
+            "chain": "ETH",
+            "name": "My ERC721",
+            "symbol": "ERC_SYMBOL",
+            "fromPrivateKey": "0x05e150c73f1920ec14caa1e0b6aa09940899678051a78542840c2668ce5080c2",
+            "provenance": false,
+            "cashback": false,
+            "publicMint": true,
+            "nonce": 0,
+            "fee": {
+              "gasLimit": "40000",
+              "gasPrice": "20"
+            }
+          })
     // Check test result in console
         console.log(test)
     }
