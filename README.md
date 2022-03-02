@@ -1,35 +1,48 @@
-# [Tatum API client v2](http://tatum.io/)
+# Tatum API SDK v2
 
-Tatum API client allows browsers and Node.js clients to interact with Tatum API. You can find API documentation at [API doc](https://tatum.io/apidoc).
+Repository for SDK testing 
 
-> **Are you looking for Tatum API client v1? It has been moved to long living branch [`/tatumio/tatum-js/tree/v1`](https://github.com/tatumio/tatum-js/tree/v1)**.
+## Instal & run
 
-## Status
+```console
+git clone https://github.com/xkazm04/sdktest.git
+npm install 
+npm start
+```
 
-V2 is currently under active development and considered alpha version. (you can still use LTS version [`v1`](https://github.com/tatumio/tatum-js/tree/v1))
+## Update
 
-## Installation
+If you already have installed package and need to upgrade, go to `package.json` and update version of tested package.
+Example: Upgrade `"@tatumio/algo": "^2.0.1-alpha.236"` to `"@tatumio/algo": "^2.0.1-alpha.238"` 
 
-This repository is a monorepo with multiple packages for each blockchain.
-
+Then install and run again
+```console
+npm install 
+npm start
+```
 ### Blockchain subpackage
 
 You can select one or more blockchain packages that you want to use in your project and install them separately.
 
 ```console
-$ npm install @tatumio/eth
+npm install @tatumio/polygon@alpha
 ```
 
-Currently supported blockchains
-| Syntax      | Description |
+Currently supported packages
+| Chain      | Package |
 | ----------- | ----------- |
-| Bitcoin      | @tatumio/btc   |
+| Algorand     | @tatumio/algo   |
 | Binance smart chain      | @tatumio/bsc   |
+| Bitcoin      | @tatumio/btc   |
 | Celo      | @tatumio/celo   |
 | Dogecoin      | @tatumio/doge   |
+| Ethereum      | @tatumio/eth   |
+| HarmonyOne      | @tatumio/one   |
 | KuCoin      | @tatumio/kcs   |
 | Litecoin      | @tatumio/ltc   |
 | Polygon      | @tatumio/polygon   |
+| Solana      | @tatumio/solana   |
+| XLM      | @tatumio/xlm   |
 | XRP      | @tatumio/xrp   |
 
 
@@ -38,7 +51,7 @@ Currently supported blockchains
 There is possibility to install full package with all supported blockchain although due to installation of all dependencies and size usage is not recommended for frontend apps.
 
 ```console
-$ npm install @tatumio/sdk
+npm install @tatumio/sdk
 ```
 
 ### Node.JS & Browser support
@@ -53,6 +66,11 @@ Library is written in TypeScript with ES2017 as the target JS version. Library s
 | TATUM_GAS_STATION_API_KEY |  |                          | In the library, there are functions for estimating the Ethereum transaction fee. For the estimation of the transaction fee, we are using https://ethgasstation.info. If you have your API key from https://ethgasstation.info you can use it. |
 | YOUR_TRON_PRO_API_KEY     |  |                          | If you want to work with TRON locally, you need to enter API Key for [Trongrid] (https://trongrid.io).                                                                                                                                        |
 ## Usage
+
+Use structure in App.tsx
+
+
+Example
 
 ```js
 // es6
@@ -87,52 +105,3 @@ Examples
 | Tatum  | ethSDK.tatum.freezeApiKey | Tatum Ledger custody services
 | Transaction  | ethSDK.transaction.prepare.transferSignedTransaction | Blockchain native transfer
 | Wallet  | ethSDK.wallet.generateWallet | Create blockchain wallet and address
-### Usage with React - Webpack 5
-Webpack v5 introduced breaking changes to Web3 library used in Tatum blockchain services. To enable Tatum SDK in React apps you need to follow workaround as per https://stackoverflow.com/questions/66952972/cannot-add-web3-to-react-project
-
-#### 1. Install additional dependencies
-
-```bash
-yarn add -D node-polyfill-webpack-plugin
-yarn add -D react-app-rewired
-```
-
-#### 2. Copy [config-overrides.js](https://github.com/npwork/create-react-app-with-webpack5/blob/main/config-overrides.js) to your project (next to package.json)
-
-#### 3. Add browserify dependencies to `package.json`
-```bash
-"assert": "npm:assert",
-"crypto": "npm:crypto-browserify",
-"http": "npm:http-browserify",
-"https": "npm:https-browserify",
-"os": "npm:os-browserify",
-"stream": "npm:stream-browserify",
-"url": "npm:url",
-...
-
-```
-
-#### 4. Replace `scripts` block in your `package.json`
-
-```
-"scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
-  },
-```
-
-#### 5. Start your app as usual
-```
-npm start
-```
-
-
-## Contributing
-
-Contributions to the Tatum API client are welcome. Please ensure
-that you have tested your changes with a local client and have added unit test
-coverage for your code.
-
-TBD procedure CONTRIBUTION.MD
